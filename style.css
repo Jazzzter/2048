@@ -1,4 +1,4 @@
-/*
+
 body {
     background-color: #DAFFA1;
 }
@@ -17,9 +17,9 @@ body {
     display: inline-block;
     vertical-align: top;
     
-    width: 33%;
-    height: 10px;
-    padding: 0px;
+    width: 30%;
+    height: auto;
+    padding: 10px;
     border: 2px solid black;
     border-radius: 10px;
     background-color: #FFFFBD;
@@ -31,4 +31,28 @@ body {
     border: 2px solid black;
     border-radius: 10px;
     background-color: #FFFFBD;
-}*/
+}
+
+
+/*----Button----*/
+#move {
+    align-items: center;
+    padding: 12px 14px;
+    font-size: 17px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-family: 'Fresca', sans-serif;
+    background-color: #FFFFFF;
+    opacity: 0.8;
+    color: hsl(216, 100%, 60%);
+    transition: 0.5s;
+}
+
+#move:hover {
+    background-color: hsla(216, 100%, 60%, 0.8);
+    color: #FFFFFF;
+    border: 3px solid #FFFFFF;
+    border-radius: 5px;
+}
