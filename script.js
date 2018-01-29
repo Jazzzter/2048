@@ -67,7 +67,7 @@ function moveUp(game) {
 
 function moveDown(game) {
     if (game) { // Если масив заполнен элементами
-        for (j = 3; j >= 0; j--) {
+        for (j = 0; j <= 3; j++) {
             
             // Сдвигаем элементы массива вниз
             for (k = 0; k <= 3; k++) {
@@ -84,7 +84,7 @@ function moveDown(game) {
                 }
                 else if (!game[1][j]) {
                     game[1][j] = game[0][j];
-                    game[3][j] = 0;
+                    game[0][j] = 0;
                 }
             }
 
@@ -111,6 +111,97 @@ function moveDown(game) {
     } else alert('Press New Game') // Если масив не заполнен элементами (не нажата кнопка New Game) выводим сообщение
 }
 
+function moveLeft(game) {
+    if (game) { // Если масив заполнен элементами
+        for (i = 0; i <= 3; i++) {
+            
+            // Сдвигаем элементы массива влево
+            for (k = 0; k <= 3; k++) {
+                if (!game[i][0]) {
+                    game[i][0] = game[i][1];
+                    game[i][1] = game[i][2];
+                    game[i][2] = game[i][3];
+                    game[i][3] = 0;
+                }
+                else if (!game[i][1]) {
+                    game[i][1] = game[i][2];
+                    game[i][2] = game[i][3];
+                    game[i][3] = 0;
+                }
+                else if (!game[i][2]) {
+                    game[i][2] = game[i][3];
+                    game[i][3] = 0;
+                }
+            }
+
+            // Суммируем одинаковые соседние элементы
+            if (game[i][0] === game[i][1]) {
+                game[i][0] += game[i][1];
+                game[i][1] = game[i][2];
+                game[i][2] = game[i][3];
+                game[i][3] = 0;
+            } 
+            else if (game[i][1] === game[i][2]) {
+                game[i][1] += game[i][2];
+                game[i][2] = game[i][3];
+                game[i][3] = 0;
+            }
+            else if (game[i][2] === game[i][3]) {
+                game[i][2] += game[i][3];
+                game[i][3] = 0;
+            }
+        }
+        addElements(game, 2);   // Добавляем 2 элемента
+        showGame(game);         // Выводим результат на екран
+        return game;
+    } else alert('Press New Game') // Если масив не заполнен элементами (не нажата кнопка New Game) выводим сообщение
+}
+
+function moveRight(game) {
+    if (game) { // Если масив заполнен элементами
+        for (i = 0; i <= 3; i++) {
+            
+            // Сдвигаем элементы массива вниз
+            for (k = 0; k <= 3; k++) {
+                if (!game[i][3]) {
+                    game[i][3] = game[i][2];
+                    game[i][2] = game[i][1];
+                    game[i][1] = game[i][0];
+                    game[i][0] = 0;
+                } 
+                else if (!game[i][2]) {
+                    game[i][2] = game[i][1];
+                    game[i][1] = game[i][0];
+                    game[i][0] = 0;
+                }
+                else if (!game[i][1]) {
+                    game[i][1] = game[i][0];
+                    game[i][0] = 0;
+                }
+            }
+
+            // Суммируем одинаковые соседние элементы
+            if (game[i][3] === game[i][2]) {
+                game[i][3] += game[i][2];
+                game[i][2] = game[i][1];
+                game[i][1] = game[i][0];
+                game[i][0] = 0;
+            } 
+            else if (game[i][2] === game[i][1]) {
+                game[i][2] += game[i][1];
+                game[i][1] = game[i][0];
+                game[i][0] = 0;
+            }
+            else if (game[i][1] === game[i][0]) {
+                game[i][1] += game[i][0];
+                game[i][0] = 0;
+            }
+        }
+        addElements(game, 2);
+        showGame(game);
+        return game;
+    } else alert('Press New Game') // Если масив не заполнен элементами (не нажата кнопка New Game) выводим сообщение
+}
 
 
 function addElements(game, n) { // Функция добавления элементов
