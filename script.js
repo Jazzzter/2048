@@ -41,24 +41,26 @@ function moveUp(game) {
                     game[3][j] = 0;
                 }
             }
+            
 
             // Суммируем одинаковые соседние элементы
-            if (game[0][j] === game[1][j]) {
-                game[0][j] += game[1][j];
-                game[1][j] = game[2][j];
-                game[2][j] = game[3][j];
-                game[3][j] = 0;
-            } 
-            else if (game[1][j] === game[2][j]) {
-                game[1][j] += game[2][j];
-                game[2][j] = game[3][j];
-                game[3][j] = 0;
-            }
-            else if (game[2][j] === game[3][j]) {
-                game[2][j] += game[3][j];
-                game[3][j] = 0;
-            }
-        }
+                if (game[0][j] === game[1][j]) {
+                    game[0][j] += game[1][j];
+                    game[1][j] = game[2][j];
+                    game[2][j] = game[3][j];
+                    game[3][j] = 0;
+                } 
+                else if (game[1][j] === game[2][j]) {
+                    game[1][j] += game[2][j];
+                    game[2][j] = game[3][j];
+                    game[3][j] = 0;
+                }
+                else if (game[2][j] === game[3][j]) {
+                    game[2][j] += game[3][j];
+                    game[3][j] = 0;
+                }
+            }   
+
         addElements(game, 2);   // Добавляем 2 элемента
         showGame(game);         // Выводим результат на екран
         return game;
@@ -205,15 +207,34 @@ function moveRight(game) {
 
 
 function addElements(game, n) { // Функция добавления элементов
-    for (k = 0; k <= n - 1; k++) {
-        var x = Math.round(Math.random() * 3);
-        var y = Math.round(Math.random() * 3);
-
-        if (game[x][y]) {
-            k = k - 1;
-        } else {
-            game[x][y] = Math.random() < 0.5 ? 2 : 4;
+    var p = 0;
+    for (i = 0; i <= 3; i++) {
+        for (j = 0; j <= 3; j++) {
+            if (game[i][j] == 0) {
+                p++
+            }
         }
+    }
+
+    console.log(p);
+
+    if (p > 1) {
+        for (k = 0; k <= n - 1; k++) {
+            var x = Math.round(Math.random() * 3);
+            var y = Math.round(Math.random() * 3);
+
+            if (game[x][y]) {
+                k = k - 1;
+            } else {
+                game[x][y] = Math.random() < 0.5 ? 2 : 4;
+            }
+        }
+    }
+    else if (p == 1) {
+        game[i][j] = Math.random() < 0.5 ? 2 : 4;
+    }
+    else {
+        alert('Game Over');
     }
 }
 
