@@ -1,58 +1,51 @@
-    var i, j, k, n, game;
+var i, j, k, n, game;
 
-// Начало новой игры
-    function newGame() {         
-        game = [[0,0,0,0],
-                [0,0,0,0],
-                [0,0,0,0],
-                [0,0,0,0]];
+function newGame() {         
+    game = [[0,0,0,0],
+            [0,0,0,0],
+            [0,0,0,0],
+            [0,0,0,0]];
 
-        addElements(game, 4);
-        showGame(game);
-        return game;            
+    addElements(game, 4);
+    showGame(game);
+    return game;            
+}
+
+function shift(vertical, horizontal) {                          // функция сдвига, принимает аргументы:
+    if (!game[i][j]) {                                          //  1,  0 -- сдвиг вверх
+        game[i][j] = game[i + vertical][j + horizontal];        // -1,  0 -- сдвиг вниз
+        game[i + vertical][j + horizontal] = 0;                 //  0,  1 -- сдвиг влево
+    }                                                           //  0, -1 -- сдвиг вправо
+    return game;
+}
+
+function sum(vertical, horizontal) {                            // функция суммирования, принимает аргументы:
+    if (game[i][j] == game[i + vertical][j + horizontal]) {     //  1,  0 -- суммирование при сдвиге вверх
+        game[i][j] += game[i + vertical][j + horizontal];       // -1,  0 -- суммирование при сдвиге вниз
+        game[i + vertical][j + horizontal] = 0;                 //  0,  1 -- суммирование при сдвиге влево
+        i += vertical;                                          //  0, -1 -- суммирование при сдвиге вправо
+        j += horizontal;
     }
-
-function shift(vertical, horizontal) {
-
+    return game;
 }
 
-
-function sum(vertical, horizontal) {
-
-}
-
-// Сдвиг вверх 
+// Сдвиг вверх
     function moveUp(game) {
         if (game) {
             for (j = 0; j <= 3; j++) {
                 for (k = 1; k <= 3; k++) {
-                    for (i = 0; i <= 2; i++) {
-                        if (!game[i][j]) {
-                            game[i][j] = game[i + 1][j];
-                            game[i + 1][j] = 0;
-                        }
-                    }
+                    for (i = 0; i <= 2; i++) shift(1, 0);
                 }
-                for (i = 0; i <= 2; i++) {
-                    if (game[i][j] == game[i + 1][j]) {
-                        game[i][j] += game[i + 1][j];
-                        game[i + 1][j] = 0;
-                        i++;
-                    }
-                }
-                 for (k = 1; k <= 3; k++) {
-                    for (i = 0; i <= 2; i++) {
-                        if (!game[i][j]) {
-                            game[i][j] = game[i + 1][j];
-                            game[i + 1][j] = 0;
-                        }
-                    }
+                for (i = 0; i <= 2; i++) sum(1, 0);
+
+                for (k = 1; k <= 3; k++) {
+                    for (i = 0; i <= 2; i++) shift(1, 0);
                 }
             }
             addElements(game, 2);
             showGame(game);
             return game;
-        } 
+        }
         else alert('Press New Game');
     }
 
@@ -60,35 +53,18 @@ function sum(vertical, horizontal) {
     function moveDown(game) {
         if (game) {
             for (j = 0; j <= 3; j++) {
-
                 for (k = 1; k <= 3; k++) {
-                    for (i = 3; i >= 1; i--) {
-                        if (!game[i][j]) {
-                            game[i][j] = game[i - 1][j];
-                            game[i - 1][j] = 0;
-                        }
-                    }
+                    for (i = 3; i >= 1; i--) shift(-1, 0);
                 }
-                for (i = 3; i >= 1; i--) {
-                    if (game[i][j] == game[i - 1][j]) {
-                        game[i][j] += game[i - 1][j];
-                        game[i - 1][j] = 0;
-                        i--;
-                    }
-                }
+                for (i = 3; i >= 1; i--) sum(-1, 0);
                 for (k = 1; k <= 3; k++) {
-                    for (i = 3; i >= 1; i--) {
-                        if (!game[i][j]) {
-                            game[i][j] = game[i - 1][j];
-                            game[i - 1][j] = 0;
-                        }
-                    }
+                    for (i = 3; i >= 1; i--) shift(-1, 0);
                 }
             }
             addElements(game, 2);
             showGame(game);
             return game;
-        } 
+        }
         else alert('Press New Game');
     }
 
@@ -97,27 +73,11 @@ function sum(vertical, horizontal) {
         if (game) {
             for (i = 0; i <= 3; i++) {
                 for (k = 1; k <= 3; k++) {
-                    for (j = 0; j <= 2; j++) {
-                        if (!game[i][j]) {
-                            game[i][j] = game[i][j + 1];
-                            game[i][j + 1] = 0;
-                        }
-                    }
+                    for (j = 0; j <= 2; j++) shift(0, 1);
                 }
-                for (j = 0; j <= 2; j++) {
-                    if (game[i][j] == game[i][j + 1]) {
-                        game[i][j] += game[i][j + 1];
-                        game[i][j + 1] = 0;
-                        j++;
-                    }
-                }
+                for (j = 0; j <= 2; j++) sum(0, 1);
                 for (k = 1; k <= 3; k++) {
-                    for (j = 0; j <= 2; j++) {
-                        if (!game[i][j]) {
-                            game[i][j] = game[i][j + 1];
-                            game[i][j + 1] = 0;
-                        }
-                    }
+                    for (j = 0; j <= 2; j++) shift(0, 1);
                 }
             }
             addElements(game, 2);
@@ -131,35 +91,18 @@ function sum(vertical, horizontal) {
     function moveRight(game) {
         if (game) {
             for (i = 0; i <= 3; i++) {
-
                 for (k = 1; k <= 3; k++) {
-                    for (j = 3; j >= 1; j--) {
-                        if (!game[i][j]) {
-                            game[i][j] = game[i][j - 1];
-                            game[i][j - 1] = 0;
-                        }
-                    }
+                    for (j = 3; j >= 1; j--) shift(0, -1);
                 }
-                for (j = 3; j >= 1; j--) {
-                    if (game[i][j] == game[i][j - 1]) {
-                        game[i][j] += game[i][j - 1];
-                        game[i][j - 1] = 0;
-                        j--;
-                    }
-                }
+                for (j = 3; j >= 1; j--) sum(0, -1);
                 for (k = 1; k <= 3; k++) {
-                    for (j = 3; j >= 1; j--) {
-                        if (!game[i][j]) {
-                            game[i][j] = game[i][j - 1];
-                            game[i][j - 1] = 0;
-                        }
-                    }
+                    for (j = 3; j >= 1; j--) shift(0, -1);
                 }
             }
             addElements(game, 2);
             showGame(game);
             return game;
-        } 
+        }
         else alert('Press New Game');
     }
 
@@ -201,6 +144,8 @@ function sum(vertical, horizontal) {
             }
         }
     }
+
+
 
 
 
