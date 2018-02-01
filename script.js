@@ -11,12 +11,21 @@ function newGame() {
 }
 
 function addElements(game, n) {
-    for (k = 0; k <= n - 1; k++) {
-        var x = Math.round(Math.random() * 3);
-        var y = Math.round(Math.random() * 3);
+    var iRand, jRand, zeroCell = 0;
+    for (i = 0; i <= 3; i++) {
+        for (j = 0; j <= 3; j++) {
+            if (!game[i][j]) {
+                zeroCell += 1;
+            }
+        }
+    }
 
-        if (game[x][y]) k = k - 1;
-        else game[x][y] = Math.random() < 0.9 ? 2 : 4;
+    for (k = 0; k < n; k++) {
+        iRand = Math.round(Math.random() * 3);
+        jRand = Math.round(Math.random() * 3);
+        
+        if (game[iRand][jRand]) k = k - 1;
+        else game[iRand][jRand] = Math.random() < 0.9 ? 2 : 4;
     }
 }
 
@@ -46,21 +55,20 @@ function move(game, vert, hor) {
                     game[i][j] = game[i + vert][j + hor];
                     game[i + vert][j + hor] = 0;
                 }  
-            }
-            
+            }      
         }
         return game;
     }
 
     function sum() {
-        for (y = m; y != n; y += s) {
+        for (y = m; y > 0 && y != n && y < 4; y += s) {
             
             i = vert ? y : x;
             j = vert ? x : y;
 
-            console.log('i=' + i + ', j=' + j);
+            console.log(i + ' ' + j);
 
-            if (game[i][j] === game[i + vert][j + hor]) {
+            if (game[i][j] == game[i + vert][j + hor]) {
                 game[i][j] += game[i + vert][j + hor];
                 game[i + vert][j + hor] = 0;
                 y += s;
