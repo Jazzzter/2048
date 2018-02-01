@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="style.css">
+        
         <title>2048</title>
     </head>
 
@@ -65,10 +65,10 @@
             <div class="controlZone">
                 <button id="move" onclick="newGame()">New Game</button>
                 <br>
-                <button id="move" onclick="moveUp(game)">&#9650</button>
-                <button id="move" onclick="moveDown(game)">&#9660</button>
-                <button id="move" onclick="moveLeft(game)">&#9668</button>
-                <button id="move" onclick="moveRight(game)">&#9658</button>
+                <button id="move" onclick="move(game, 1, 0)">&#9650</button>
+                <button id="move" onclick="move(game, -1, 0)">&#9660</button>
+                <button id="move" onclick="move(game, 0, 1)">&#9668</button>
+                <button id="move" onclick="move(game, 0, -1)">&#9658</button>
                 
 
             </div>
