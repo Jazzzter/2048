@@ -32,26 +32,25 @@ function addElements(game, n) {
 function showGame(game) {
     for (i = 0; i <= 3; i++) {
         for (j = 0; j <= 3; j++) {
-            // document.getElementById(i + '-' + j).innerHTML = game[i][j];
-            document.write(game[i][j] + ' ');
+            document.getElementById(i + '-' + j).innerHTML = game[i][j];
+            // document.write(game[i][j] + ' ');
         }
-        document.write('<br>');
+        // document.write('<br>');
     }
-    document.write('<br>');
+    // document.write('<br>');
 }
 
-newGame();
+
 
 function move(game, vertDirection, horDirection) {
-    var x, y,
-        s = vertDirection + horDirection;
+    var x, y;
 
     function mirror() {
-        if (vertDirection === -1) {
+        if (vertDirection < 0) {
             game.reverse();
         }
-        else if (horDirection === -1) {
-            game[i].reverse();
+        else if (horDirection < 0) {
+            game[x].reverse();
         }
         return game;
     }
@@ -61,11 +60,11 @@ function move(game, vertDirection, horDirection) {
             mirror();
             for (k = 0; k < 3; k += 1) {
                 for (y = 0; y < 3; y += 1) {
-                    i = vert ? y : x;
-                    j = vert ? x : y;
-                    if (game[i][j] == 0) {
-                        game[i][j] = game[i + vertDirection][j + horDirection];
-                        game[i + vertDirection][j + horDirection] = 0;
+                    i = vertDirection ? y : x;
+                    j = vertDirection ? x : y;
+                    if (game[i][j] === 0) {
+                        game[i][j] = game[i + Math.abs(vertDirection)][j + Math.abs(horDirection)];
+                        game[i + Math.abs(vertDirection)][j + Math.abs(horDirection)] = 0;
                     }
                 }
             }
@@ -73,72 +72,121 @@ function move(game, vertDirection, horDirection) {
         }
         return game;
     }
-}
 
-move(game, 1, 0);
-
-showGame(game);
-
-
-    // //--------Up-------
-    // for (j = 0; j <= 3; j += 1) {
-    //     for (k = 0; k < 3; k += 1) {
-    //         for (i = 0; i < 3; i += 1) {
-    //             if (game[i][j] == 0) {
-    //                 game[i][j] = game[i + 1][j];
-    //                 game[i + 1][j] = 0;
-    //             }
-    //         }
-    //     }
-    // }
-
-
-    // //--------Down-------
-    // for (j = 0; j <= 3; j += 1) {
-    //     game.reverse();
-    //     for (k = 0; k < 3; k += 1) {
-    //         for (i = 0; i < 3; i += 1) {
-    //             if (game[i][j] == 0) {
-    //                 game[i][j] = game[i + 1][j];
-    //                 game[i + 1][j] = 0;
-    //             }
-    //         }
-    //     }
-    //     game.reverse();
-    // }
-
-    // //--------Left-------
-    // for (i = 0; i <= 3; i += 1) {
-    //     for (k = 0; k < 3; k += 1) {
-    //         for (j = 0; j < 3; j += 1) {
-    //             if (game[i][j] == 0) {
-    //                 game[i][j] = game[i][j + 1];
-    //                 game[i][j + 1] = 0;
-    //             }
-    //         }
-    //     }
-    // }
-
-    // //--------Right-------
-    // for (i = 0; i <= 3; i += 1) {
-    //     game[i].reverse();
-    //     for (k = 0; k < 3; k += 1) {
-    //         for (j = 0; j < 3; j += 1) {
-    //             if (game[i][j] == 0) {
-    //                 game[i][j] = game[i][j + 1];
-    //                 game[i][j + 1] = 0;
-    //             }
-    //         }
-    //     }
-    //     game[i].reverse();
-    // }
+    function sum() {
+        for (x = 0; x <= 3; x += 1) {
+            mirror();
+            
+                for (y = 0; y < 3; y += 1) {
+                    i = vertDirection ? y : x;
+                    j = vertDirection ? x : y;
+                    if (game[i][j] === game[i + Math.abs(vertDirection)][j + Math.abs(horDirection)]) {
+                        game[i][j] += game[i + Math.abs(vertDirection)][j + Math.abs(horDirection)];
+                        game[i + Math.abs(vertDirection)][j + Math.abs(horDirection)] = 0;
+                    }
+                }
+            
+            mirror();
+        }
+        return game;
+    }
     
 
+    shift();
+    sum();
+    shift();
+    addElements(game, 2);
+    showGame(game);
+}
+
+// move(game, 1, 0);
+
+// showGame(game);
+
+// move(game, -1, 0);
+
+// showGame(game);
+
+// move(game, 0, 1);
+
+// showGame(game);
+
+// move(game, 0, -1);
+
+// showGame(game);
 
 
 
+//     //--------Up-------
+// function moveUp(game) {
+//     for (j = 0; j <= 3; j += 1) {
+//         for (k = 0; k < 3; k += 1) {
+//             for (i = 0; i < 3; i += 1) {
+//                 if (game[i][j] == 0) {
+//                     game[i][j] = game[i + 1][j];
+//                     game[i + 1][j] = 0;
+//                 }
+//             }
+//         }
+//     }
+// }
 
 
+//     //--------Down-------
+// function moveDown(game) {
+//     for (j = 0; j <= 3; j += 1) {
+//         game.reverse();
+//         for (k = 0; k < 3; k += 1) {
+//             for (i = 0; i < 3; i += 1) {
+//                 if (game[i][j] == 0) {
+//                     game[i][j] = game[i + 1][j];
+//                     game[i + 1][j] = 0;
+//                 }
+//             }
+//         }
+//         game.reverse();
+//     }
+// }
+
+//     //--------Left-------
+// function moveLeft(game) {
+//     for (i = 0; i <= 3; i += 1) {
+//         for (k = 0; k < 3; k += 1) {
+//             for (j = 0; j < 3; j += 1) {
+//                 if (game[i][j] == 0) {
+//                     game[i][j] = game[i][j + 1];
+//                     game[i][j + 1] = 0;
+//                 }
+//             }
+//         }
+//     }
+// }
+
+//     //--------Right-------
+// function moveRight(game) {
+//     for (i = 0; i <= 3; i += 1) {
+//         game[i].reverse();
+//         for (k = 0; k < 3; k += 1) {
+//             for (j = 0; j < 3; j += 1) {
+//                 if (game[i][j] == 0) {
+//                     game[i][j] = game[i][j + 1];
+//                     game[i][j + 1] = 0;
+//                 }
+//             }
+//         }
+//         game[i].reverse();
+//     }
+// }
+
+
+// moveUp(game);
+// showGame(game);
+// moveDown(game);
+// showGame(game);
+// moveLeft(game);
+// showGame(game);
+// moveRight(game);
+// showGame(game);
 
 
 

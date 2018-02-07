@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        
+        <title>2048</title>
+    </head>
+
+    <body>
+        <div class="game">
+
+
+            <div class="resultZome">
+                
+                <table>
+                    <tr>
+                        <td class="elemntResult" id="score">Score</td>
+                    </tr>
+                    <tr>
+                        <td class="elemntResult" id="gameTime">GameTime</td>
+                    </tr>
+                    <tr>
+                        <td class="elemntResult" id="muveNumber">MuveNumber</td>
+                    </tr>
+                    <tr>
+                        <td class="elemntResult" id="bestResult">BestResult</td>
+                    </tr>
+                </table>
+
+            </div>
+
+            <div class="gameZone">
+                
+                <table>
+                    <tr>
+                        <td class="elemnt" id="0-0">-</td>
+                        <td class="elemnt" id="0-1">-</td>
+                        <td class="elemnt" id="0-2">-</td>
+                        <td class="elemnt" id="0-3">-</td>
+                    </tr>
+                    <tr>
+                        <td class="elemnt" id="1-0">-</td>
+                        <td class="elemnt" id="1-1">-</td>
+                        <td class="elemnt" id="1-2">-</td>
+                        <td class="elemnt" id="1-3">-</td>
+                    </tr>
+                    <tr>
+                        <td class="elemnt" id="2-0">-</td>
+                        <td class="elemnt" id="2-1">-</td>
+                        <td class="elemnt" id="2-2">-</td>
+                        <td class="elemnt" id="2-3">-</td>
+                    </tr>
+                    <tr>
+                        <td class="elemnt" id="3-0">-</td>
+                        <td class="elemnt" id="3-1">-</td>
+                        <td class="elemnt" id="3-2">-</td>
+                        <td class="elemnt" id="3-3">-</td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+            <div class="controlZone">
+                <button id="move" onclick="newGame()">New Game</button>
+                <br>
+                <button id="move" onclick="move(game, 1, 0)">&#9650</button>
+                <button id="move" onclick="move(game, -1, 0)">&#9660</button>
+                <button id="move" onclick="move(game, 0, 1)">&#9668</button>
+                <button id="move" onclick="move(game, 0, -1)">&#9658</button>
+                
+
+            </div>
+
+        </div>
+        <script src="test_script.js"></script>
+  
+    </body>
+</html>
