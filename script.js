@@ -61,7 +61,8 @@ function move(game, vert, hor) {
     }
 
     function sum() {
-        for (y = m; y > 0 && y != n && y < 4; y += s) {
+        k = 0;
+        for (y = m; y != n; y += s) {
             
             i = vert ? y : x;
             j = vert ? x : y;
@@ -73,6 +74,8 @@ function move(game, vert, hor) {
                 game[i + vert][j + hor] = 0;
                 y += s;
             }
+            k += 1;
+            if (k > 2) break;
         }
         return game;
     }
