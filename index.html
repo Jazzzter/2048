@@ -7,7 +7,6 @@
     </head>
 
     <body>
-
         <div class="game">
 
 
@@ -15,16 +14,19 @@
                 
                 <table>
                     <tr>
-                        <td class="elemntResult" id="score">Score</td>
+                        <td class="elemntResult" id="score">Score: </td>
                     </tr>
                     <tr>
-                        <td class="elemntResult" id="gameTime">GameTime</td>
+                        <td class="elemntResult" id="gameTime">GameTime: </td>
+                    </tr>
+<!--                <tr>
+                        <td class="elemntResult" id="possibleMoves">PossibleMoves: </td>
+                    </tr> -->
+                    <tr>
+                        <td class="elemntResult" id="muveNumber">MoveNumber: </td>
                     </tr>
                     <tr>
-                        <td class="elemntResult" id="muveNumber">MuveNumber</td>
-                    </tr>
-                    <tr>
-                        <td class="elemntResult" id="bestResult">BestResult</td>
+                        <td class="elemntResult" id="bestResult">BestResult: </td>
                     </tr>
                 </table>
 
@@ -63,7 +65,7 @@
             </div>
 
             <div class="controlZone">
-                <button id="move" onclick="newGame()">New Game</button>
+                <button id="move" onclick="newGame(4)">New Game 4x4</button>
                 <br>
                 <button id="move" onclick="move(game, 1, 0)">&#9650</button>
                 <button id="move" onclick="move(game, -1, 0)">&#9660</button>
@@ -74,8 +76,7 @@
             </div>
 
         </div>
-        
-        <script src="script.js"></script>
+        <script src="test_script.js"></script>
   
     </body>
 </html>
