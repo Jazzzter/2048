@@ -1,4 +1,4 @@
-var game, score, muveNumber;
+var game, returnGame, score, returnScore, muveNumber, returnMuveNumber;
 
 var cellColor = ['#d8daf3', '#cdcfef', '#c2c4eb', '#b7b9e8', '#abaee4',
                        '#a0a3e0', '#9598dc', '#8a8dd8', '#7f83d4',
@@ -31,28 +31,51 @@ function newGame(n) {
     score = 0,
     muveNumber = -1;
     game = new Array(n);
+    returnGame = new Array(n);
+
     for (i = 0; i < n; i += 1) {
         game[i] = new Array(n);
+        returnGame[i] = new Array(n);
         for (j = 0; j < n; j += 1) {
             game[i][j] = 0;
+            returnGame[i][j] = 0;
         }
     }
     // Добавляем 4 числа в массив game
     addElements(game, 4);
-    // game = [[2, 4, 8, 16],
-    //         [32, 64, 128, 256],
-    //         [512, 1024, 2048, 4096],
-    //         [8192, 16384, 32768, 65536]];
+    // Запускаем таймер
+    // timer();
     // Выводим результаты
     showGame(game);
     // Возвращаем массив game
     return game;
 }
 
+// function timer() {
+//     var seconds = 0,
+//         minutes = 0;
+//     function tick() {
+//         var counter = document.getElementById('gameTime');
+//         var current_minutes = minutes;
+//             seconds += 1;
+//         counter.innerHTML = 'GameTime: ' + current_minutes.toString() + ':' + (seconds < 10 ? '0' : '') + seconds;
+//         if (seconds > 1) {
+//             timer = setTimeout(tick, 1000);
+//         } else {
+//             if (minutes > 1) {
+//                 countDown(minutes + 1);
+//             }
+//         }
+
+//     }
+//     tick();
+// }
+
+
 function addElements(game, p) {
     var randCell, i, j, k,
         zeroCells = [];
-        
+
 // Создаем массив zeroCells с координатами пустых(нулевых) ячеек массива game
     for (i = 0; i <= 3; i += 1) {
         for (j = 0; j <= 3; j += 1) {
@@ -108,7 +131,17 @@ function addElements(game, p) {
         zeroCells.splice(randCell, 1); // Из массива с координатамы пустых(нулевых) ячеек удаляем элемент(он уже не пустой)
     }
     muveNumber += (p) ? 1 : 0; // инкрементируем колличество ходов
-    
+}
+
+function gameReturn() {
+    for (i = 0; i < 4; i += 1) {
+        for (j = 0; j <4; j += 1) {
+            game[i][j] = returnGame[i][j];
+        }
+    }
+    score = returnScore;
+    muveNumber = returnMuveNumber;
+    showGame(game);
 }
 
 function showGame(game) {
@@ -177,11 +210,22 @@ function move(game, vertDirection, horDirection) {
                     game[i + v][j + h] = 0;
                     score += game[i][j];
                 }
-            } 
+            }
             mirror();
         }
         return game;
     }
+
+    for (i = 0; i < 4; i += 1) {
+        for (j = 0; j <4; j += 1) {
+            returnGame[i][j] = game[i][j]; // сохраняем для возможности "ШагНазад"
+        }
+    }
+
+
+    returnScore = score;
+    returnMuveNumber = muveNumber;
+
     shift();
     sum();
     shift();

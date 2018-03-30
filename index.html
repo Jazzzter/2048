@@ -13,14 +13,13 @@
 
     		<div class="row">
     			
-    			<div class="cell">
-
+    			<div>
     				<div class="row">
     					<div class="resultCell" id="score">Score:</div>
     				</div>
 
     				<div class="row">
-    					<div class="resultCell" id="time">Time:</div>
+    					<div class="resultCell" id="gameTime">GameTime:</div>
     				</div>
 
     				<div class="row">
@@ -30,11 +29,9 @@
     				<div class="row">
     					<div class="resultCell" id="bestResult">BestResult:</div>
     				</div>
-    				
     			</div>
 
     			<div class="gameCell">
-
     				<div class="row">
     					<div class="matrixCell" id="0-0"></div>
     					<div class="matrixCell" id="0-1"></div>
@@ -58,14 +55,16 @@
     					<div class="matrixCell" id="3-1"></div>
     					<div class="matrixCell" id="3-2"></div>
     					<div class="matrixCell" id="3-3"></div>
-    				</div>
-    					
+    				</div>		
     			</div>
 
-    			<div class="cell">
-    				
+    			<div>
     				<div class="row">
     					<button class="controlButton" onclick="newGame(4)">NewGame 4х4</button>
+    				</div>
+
+    				<div class="row">
+    					<button class="controlButton">NewGame 5х5</button>
     				</div>
 
     				<div class="row">
@@ -73,13 +72,8 @@
     				</div>
 
     				<div class="row">
-    					<button class="controlButton">NewGame 8х8</button>
+    					<button class="controlButton" onclick="gameReturn()">Return</button>
     				</div>
-
-    				<div class="row">
-    					<button class="controlButton">Return</button>
-    				</div>
-    				
     			</div>
     			
     		</div>

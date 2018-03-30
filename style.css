@@ -1,42 +1,5 @@
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
-}
-
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
-    display: block;
-}
 body {
-    line-height: 1;
-}
-ol, ul {
-    list-style: none;
-}
-blockquote, q {
-    quotes: none;
-}
-
-/*-----------------------------------------------------*/
-
-body {
-    background: #d8d8fa/*#FFF5DD*/;
+    background: #d8d8fa;
     font-family: Arial;
     font-size: 20px;
     color: #FFFFFF;
@@ -49,21 +12,16 @@ body {
 }
 
 .row {
-    display: table-row;
-    
-
+    display: flex;
 }
 
-.cell {
-    display: table-cell;
-    border-spacing: 0px;
-}
+
 
 .resultCell {
     display: table-cell;
-    border: 2px solid #d8d8fa/*#FFF5DD*/;
+    border: 2px solid #d8d8fa;
     border-radius: 10px;
-    background: #5350e6/*#EDCC80*/;
+    background: #5350e6;
     height: 70px;
     width: 180px;
     padding-left: 10px;
@@ -72,18 +30,17 @@ body {
 }
 
 .gameCell {
-    display: table;
-    border: 2px solid #5350e6/*#EDCC80*/;
+    border: 2px solid #5350e6;
     border-radius: 5px;
-    background: #5350e6/*#EDCC80*/;
+    background: #5350e6;
     border-spacing: 0px;
 }
 
 .matrixCell {
     display: table-cell;
-    border: 2px solid #5350e6/*#EDCC80*/;
+    border: 2px solid #5350e6;
     border-radius: 5px;
-    background: #d8daf3/*#DEDEDE*/;
+    background: #d8daf3;
     height: 70px;
     width: 70px;
     text-align: center;
@@ -93,10 +50,10 @@ body {
 
 .controlButton {
     display: table-cell;
-    border: 2px solid #d8d8fa/*#FFF5DD*/;
+    border: 2px solid #d8d8fa;
     border-radius: 10px;
-    background: #5350e6/*#EDCC80*/;
-    height: 72px;
+    background: #5350e6;
+    height: 74px;
     width: 180px;
     font-family: Arial;
     font-size: 20px;
@@ -104,7 +61,7 @@ body {
 }
 
 .controlButton:hover {
-    background: #2f2cdf/*#EDB532*/;
+    background: #2f2cdf;
 }
 
 .controlButton:active {
