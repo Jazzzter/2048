@@ -18,7 +18,8 @@ body {
 
 
 .resultCell {
-    display: table-cell;
+    display: flex;
+    align-items: center;
     border: 2px solid #d8d8fa;
     border-radius: 10px;
     background: #5350e6;
@@ -37,7 +38,6 @@ body {
 }
 
 .matrixCell {
-    display: table-cell;
     border: 2px solid #5350e6;
     border-radius: 5px;
     background: #d8daf3;
